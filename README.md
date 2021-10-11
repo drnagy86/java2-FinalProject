@@ -16,3 +16,12 @@ When first learning about object-oriented programming, it seemed useful to be ab
 It was interesting to learn about the code contract that interfaces create. Understanding that it is an unimplementable set of method definitions was a little confusing at first but seeing how they are applied filled in some gaps in my understanding of polymorphism. It is also interesting to see how dependency inversion is applied to achieve loose coupling to an interface. I can see the advantages of letting the programmer decide how the implementation should work. This will change the way I write code.
 
 I was aware that there was something called Lambda expressions but not sure how it worked exactly. Learning about functional interfaces really puts the pieces together as far as understanding how it works. It still is tricky because much is abstracted away but now I understand more about how Lambda expressions work under the hood.
+
+
+## Open Source Projects
+My GitHub knowledge previously focused on being able to do add-commit-push. I was more or less using a project repository as a way of backing up a project or sharing.
+
+I learned more about how branches work. I think it will change the way I work with code. I like that you could create a branch and the main, working branch is safe.
+
+I also learned a lot more about how forks work, as well as well as how remote and local repositories interact with each other. It seemed confusing but now I see how the various pieces interact with each other and the importance of doing a pull request on the origin’s upstream.
+
