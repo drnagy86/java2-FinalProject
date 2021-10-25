@@ -23,5 +23,7 @@ My GitHub knowledge previously focused on being able to do add-commit-push. I wa
 
 I learned more about how branches work. I think it will change the way I work with code. I like that you could create a branch and the main, working branch is safe.
 
-I also learned a lot more about how forks work, as well as well as how remote and local repositories interact with each other. It seemed confusing but now I see how the various pieces interact with each other and the importance of doing a pull request on the origin’s upstream.
+I also learned a lot more about how forks work, as well as how remote and local repositories interact with each other. It seemed confusing but now I see how the various pieces interact with each other and the importance of doing a pull request on the origin’s upstream.
 
+## Generics
+Generics were something that I was aware of and understood from reading documentation was important. I also was using generics and didn’t know it when accessing the Collections class. So, I knew how to use classes that implement generics but not how to create my own. It was more abstract before, but now I understand how the classes are written and learned a lot about how a programming language works. It seems like a good way to write clean and reusable code that also uses flexible type safety. 
