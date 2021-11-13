@@ -31,3 +31,6 @@ Generics were something that I was aware of and understood from reading document
 
 ## Lambda Expressions
 Learning about the built-in functional interfaces was interesting. It was good practice with writing lambda expressions using the java.util.function package. It also allowed me to practice using generics and understanding the documentation for generic types. I understand how the predefined functional interfaces work. I have a harder time thinking of how to use it in my coding. I think that I could see myself using Predicate as a way to control if/else statements or while loops that rely on a condition that needs to be calculated and has changing arguments. It seems like something that I am going to have to get used to reading and seeing how it is applied before I truly start using it as a solution.
+
+## Collections
+Learning about the built in methods that come with Java Collections seemed useful. The options to sort a list or to replace items in it are very useful. I also found the map interface useful, especially the TreeMap that sorts it. Reading about the efficiency of the various methods that sort was also gave me some more perspective on how computers and programming works. It also makes me appreciate the history of the language and the legions of mathematicians who have created these methods in the name of efficiency. 
