@@ -18,7 +18,7 @@ public class Person {
     private LocalDate birthday;
 
 
-    public static final LocalDate DEFAULT_BIRTHDAY = LocalDate.now().minusYears(18);
+    public static final LocalDate DEFAULT_BIRTHDAY = LocalDate.now().minusYears(40);
     public static final String DEFAULT_FIRST_NAME = "John";
     public static final String DEFAULT_LAST_NAME = "Doe";
 
@@ -35,6 +35,9 @@ public class Person {
     }
 
     public Person(String firstName, String lastName, LocalDate birthday) {
+        validateStringNotNull(firstName,lastName);
+        validateDateRange1700toNow(birthday);
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -44,7 +47,9 @@ public class Person {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName)
+    {
+        validateStringNotNull(firstName);
         this.firstName = firstName;
     }
 
@@ -52,7 +57,9 @@ public class Person {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName)
+    {
+        validateStringNotNull(lastName);
         this.lastName = lastName;
     }
 
@@ -61,6 +68,7 @@ public class Person {
     }
 
     public void setBirthday(LocalDate birthday) {
+        validateDateRange1700toNow(birthday);
         this.birthday = birthday;
     }
 
@@ -73,10 +81,12 @@ public class Person {
                 '}';
     }
 
-    public void validateStringNotNull(String stringToTest){
+    public void validateStringNotNull(String ... stringToTest ){
 
-        if (stringToTest == null){
-            throw new NullPointerException(NULL_POINTER_EXCEPTION_MESSAGE);
+        for (String s : stringToTest) {
+            if (s == null){
+                throw new NullPointerException(NULL_POINTER_EXCEPTION_MESSAGE);
+            }
         }
     }
 
@@ -85,6 +95,8 @@ public class Person {
             throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE);
         }
     }
+
+
 
 
 }
