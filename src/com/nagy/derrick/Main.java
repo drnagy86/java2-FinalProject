@@ -1,41 +1,63 @@
 package com.nagy.derrick;
 
 import java.util.Arrays;
+import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-//        Book[] bookshelf = new Book[4];
-//        bookshelf[0] = new Book(
-//                "Python",
-//                "Marc Hauschildt",
-//                false,
-//                1000
-//        );
-//        bookshelf[1] = new Book(
-//                "Java",
-//                "Marc Hauschildt",
-//                false,
-//                750
-//        );
-//        bookshelf[2] = new Book(
-//                "Java",
-//                "Ada Lovelace",
-//                false,
-//                500
-//        );
-//        bookshelf[3] = new Book();
-//
-//        Arrays.sort(bookshelf);
-//        System.out.println("There are " + Book.getBookCount() + " books on the bookshelf.");
-//        for (Book book : bookshelf){
-//            System.out.println(book);
-//        }
-//        System.out.println(CrustType.GLUTEN_FREE);
+        Language language = new Language();
+        language.setLocale(Language.Option.US);
+        ResourceBundle messages = language.getMessages();
 
-        System.out.println(Size.EXTRA_LARGE);
-        System.out.println(Size.TERMINATOR);
+        CarDAO dao = CarDAOFactory.getCarDAO();
+        Scanner scanner = new Scanner(System.in);
+        String menuTitle = "Main Menu";
+        String prompt = "Select an option";
+        String[] menuOptions = {
+                messages.getString("add-car"),
+                "Find a car",
+                "Show all cars",
+                "Update a car",
+                "Delete a car",
+                "Change language",
+                "Change data source"
+        };
+        int choice = 0;
+        while (true) {
+            choice = UIUtility.showMenuOptions(menuTitle, prompt, menuOptions, scanner);
+            if (choice == 0)
+                continue;
+            if (choice == menuOptions.length + 1)
+                break;
+            UIUtility.showSectionTitle().accept(menuOptions[Integer.valueOf(choice) - 1]);
+            switch (choice) {
+                case 1:
+                    new AddCar().handleTask(dao,scanner);
+                    break;
+                case 2:
 
+                    break;
+                case 3:
 
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+
+                    break;
+                case 6:
+
+                    break;
+                case 7:
+
+                    break;
+            }
+            UIUtility.pressEnterToContinue(scanner);
+        }
+        System.out.println("\nProgram complete. Goodbye.\n");
+        scanner.close();
     }
 }

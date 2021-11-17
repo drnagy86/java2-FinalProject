@@ -22,7 +22,7 @@ public class Person {
     public static final String DEFAULT_FIRST_NAME = "John";
     public static final String DEFAULT_LAST_NAME = "Doe";
 
-    public static final LocalDate EARLIEST_BIRTHDAY = LocalDate.ofYearDay(1700,1);
+    public static final LocalDate EARLIEST_BIRTHDAY = LocalDate.ofYearDay(1500,1);
     public static final LocalDate LATEST_BIRTHDAY = LocalDate.now();
 
     public static final String NULL_POINTER_EXCEPTION_MESSAGE = "This field can't be empty.";
