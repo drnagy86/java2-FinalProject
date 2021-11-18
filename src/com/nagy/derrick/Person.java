@@ -1,5 +1,6 @@
 package com.nagy.derrick;
 
+import java.time.DateTimeException;
 import java.time.LocalDate;
 
 public class Person {
@@ -25,8 +26,8 @@ public class Person {
     public static final LocalDate EARLIEST_BIRTHDAY = LocalDate.ofYearDay(1500,1);
     public static final LocalDate LATEST_BIRTHDAY = LocalDate.now();
 
-    public static final String NULL_POINTER_EXCEPTION_MESSAGE = "This field can't be empty.";
-    public static final String ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE = "Not a date between 1700 and now.";
+    public static final String MSG_NULL_POINTER_EXCEPTION = "This field can't be empty.";
+    public static final String MSG_DATE_TIME_EXCEPTION = "Not a date between 1700 and now.";
 
     public Person() {
         firstName = DEFAULT_FIRST_NAME;
@@ -85,14 +86,14 @@ public class Person {
 
         for (String s : stringToTest) {
             if (s == null){
-                throw new NullPointerException(NULL_POINTER_EXCEPTION_MESSAGE);
+                throw new NullPointerException(MSG_NULL_POINTER_EXCEPTION);
             }
         }
     }
 
     public void validateDateRange1700toNow(LocalDate dateToTest){
         if (dateToTest.isBefore(EARLIEST_BIRTHDAY) || dateToTest.isAfter(LATEST_BIRTHDAY)){
-            throw new IllegalArgumentException(ILLEGAL_ARGUMENT_EXCEPTION_MESSAGE);
+            throw new DateTimeException(MSG_DATE_TIME_EXCEPTION);
         }
     }
 
