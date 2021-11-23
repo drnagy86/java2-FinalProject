@@ -1,5 +1,6 @@
 package com.nagy.derrick;
 
+import com.nagy.derrick.car.Car;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;

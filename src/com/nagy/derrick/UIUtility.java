@@ -59,42 +59,31 @@ public class UIUtility {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            showErrorMessage("Invalid input", in);
+            showErrorMessage().accept("Invalid input", in);
+
         }
         return intInput;
     }
 
-    /**
-     * Displays the supplied message.  If waitForAcknowledement is true, will
-     * also call pressEnterToContinue().
-     *
-     * @param message The error message
-     * @param in a Scanner object
-     */
-
-    public static void showErrorMessage(String message, Scanner in) {
-        System.out.println("ERROR: " + message);
-        pressEnterToContinue(in);
-    }
 
     public static BiConsumer<String, Scanner> showErrorMessage(){
         return (message, in) ->{
-
             System.out.println("ERROR: " + message);
-            pressEnterToContinue(in);
+            pressEnterToContinue().accept(in);
         };
 
     }
 
-    /**
-     * Displays a wait prompt and waits for the user to hit the enter key.
-     *
-     * @param in a Scanner object
-     */
+//    public static void pressEnterToContinue(Scanner in) {
+//        System.out.print("\nPress Enter to continue... ");
+//        in.nextLine();
+//    }
 
-    public static void pressEnterToContinue(Scanner in) {
-        System.out.print("\nPress Enter to continue... ");
-        in.nextLine();
+    public static Consumer<Scanner> pressEnterToContinue(){
+        return in -> {
+            System.out.println("\nPress Enter to continue... ");
+            in.nextLine();
+        };
     }
 
     public static Consumer<String> showSectionTitle(){

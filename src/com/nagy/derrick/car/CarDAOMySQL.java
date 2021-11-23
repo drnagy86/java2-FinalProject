@@ -1,17 +1,14 @@
-package com.nagy.derrick;
+package com.nagy.derrick.car;
+
+import com.nagy.derrick.DataException;
 
 import java.util.List;
 
-public class CarDAOXML implements CarDAO {
-    private static final String FILE_NAME = "cars.xml";
+public class CarDAOMySQL implements CarDAO {
     private static List<Car> cars;
 
     @Override
     public void readInData() throws DataException {
-
-    }
-
-    private void saveToFile() throws DataException {
 
     }
 

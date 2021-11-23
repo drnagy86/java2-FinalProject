@@ -1,6 +1,5 @@
 package com.nagy.derrick;
 
-import java.util.Arrays;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -11,16 +10,18 @@ public class Main {
         language.setLocale(Language.Option.US);
         ResourceBundle messages = language.getMessages();
 
-        CarDAO dao = CarDAOFactory.getCarDAO();
+//        CarDAO dao = CarDAOFactory.getCarDAO();
+        PresidentDAO dao = PresidentDAOFactory.getPresidentDAO();
         Scanner scanner = new Scanner(System.in);
         String menuTitle = "Main Menu";
         String prompt = "Select an option";
         String[] menuOptions = {
-                messages.getString("add-car"),
-                "Find a car",
-                "Show all cars",
-                "Update a car",
-                "Delete a car",
+                //messages.getString("add-president"),
+                "Add a president",
+                "Find a president",
+                "Show all presidents",
+                "Update a president",
+                "Delete a president",
                 "Change language",
                 "Change data source"
         };
@@ -34,7 +35,7 @@ public class Main {
             UIUtility.showSectionTitle().accept(menuOptions[Integer.valueOf(choice) - 1]);
             switch (choice) {
                 case 1:
-                    new AddCar().handleTask(dao,scanner);
+                    //new AddCar().handleTask(dao,scanner);
                     break;
                 case 2:
 
@@ -55,7 +56,7 @@ public class Main {
 
                     break;
             }
-            UIUtility.pressEnterToContinue(scanner);
+            UIUtility.pressEnterToContinue().accept(scanner);
         }
         System.out.println("\nProgram complete. Goodbye.\n");
         scanner.close();

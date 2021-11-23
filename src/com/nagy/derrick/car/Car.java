@@ -1,4 +1,4 @@
-package com.nagy.derrick;
+package com.nagy.derrick.car;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package com.nagy.derrick;
+package com.nagy.derrick.car;
 
 public class CarDAOFactory {
     private static final String DAO_SOURCE = "CSV";

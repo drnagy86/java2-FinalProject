@@ -1,4 +1,4 @@
-package com.nagy.derrick;
+package com.nagy.derrick.car;
 
 public enum CrustType {
     //Create an Enum for CrustType.
