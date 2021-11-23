@@ -43,6 +43,11 @@ class PresidentTest {
     }
 
     @Test
+    void getPresidentID(){
+        assertEquals(president.getPresidentID(), President.DEFAULT_PRESIDENT_ID);
+    }
+
+    @Test
     void testToString(){
         String expected = "Person" +
                 "{firstName='" +
@@ -51,11 +56,14 @@ class PresidentTest {
                 President.DEFAULT_LAST_NAME +
                 "', birthday=" +
                 President.DEFAULT_BIRTHDAY +
-                "}President{inaugurationAge_Years=" +
+                "} President{inaugurationAgeYears=" +
                 President.DEFAULT_INAUGURATION_AGE_YEARS +
-                ", inaugurationAge_Days=" +
+                ", inaugurationAgeDays=" +
                 President.DEFAULT_INAUGURATION_AGE_DAYS +
-                "}";
+                ", presidentID=" +
+                President.DEFAULT_PRESIDENT_ID +
+                "}"
+                ;
         assertEquals(expected, president.toString());
     }
 
@@ -212,6 +220,30 @@ class PresidentTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> president.setInaugurationAgeDays(newInaugurationAgeDays));
 
         String expected = President.MSG_ILLEGAL_ARGUMENT_EXCEPTION_INAUGURATION_AGE_DAYS;
+        String actual = exception.getMessage();
+
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void setPresidentID(){
+        //arrange
+        final int expected = 2;
+        int acutal;
+        //act
+        president.setPresidentID(expected);
+        acutal = president.getPresidentID();
+        //assert
+        assertEquals(expected, acutal);
+    }
+
+    @Test
+    void setPresidentIDTooLow(){
+        int newPresidentID = 0;
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> president.setPresidentID(newPresidentID));
+
+        String expected = President.MSG_ILLEGAL_ARGUMENT_EXCEPTION_PRESIDENT_ID;
         String actual = exception.getMessage();
 
         assertEquals(expected,actual);
