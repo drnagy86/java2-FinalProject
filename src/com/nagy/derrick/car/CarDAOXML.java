@@ -1,9 +1,11 @@
-package com.nagy.derrick;
+package com.nagy.derrick.car;
+
+import com.nagy.derrick.DataException;
 
 import java.util.List;
 
-public class CarDAOCSV implements CarDAO {
-    private static final String FILE_NAME = "cars.csv";
+public class CarDAOXML implements CarDAO {
+    private static final String FILE_NAME = "cars.xml";
     private static List<Car> cars;
 
     @Override

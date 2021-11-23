@@ -1,4 +1,9 @@
-package com.nagy.derrick;
+package com.nagy.derrick.car;
+
+import com.nagy.derrick.DataException;
+import com.nagy.derrick.Helpers;
+import com.nagy.derrick.Language;
+import com.nagy.derrick.UIUtility;
 
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -31,6 +36,6 @@ public class AddCar implements CarDataHandler {
         } catch (DataException e) {
             UIUtility.showErrorMessage().accept(e.getMessage(), in);
         }
-        UIUtility.pressEnterToContinue(in);
+        UIUtility.pressEnterToContinue().accept(in);
     }
 }

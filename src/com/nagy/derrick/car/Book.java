@@ -1,4 +1,4 @@
-package com.nagy.derrick;
+package com.nagy.derrick.car;
 
 public class Book implements Comparable<Book> {
     private String title;
