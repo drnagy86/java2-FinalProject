@@ -13,29 +13,38 @@ public class AddCar implements CarDataHandler {
     private static ResourceBundle messages = language.getMessages();
 
     @Override
-    public void handleTask(CarDAO dao, Scanner in) {
+    public void handleTask(CarDAO dao, Scanner in, ResourceBundle messages) {
         Car car = new Car();
-        car.setLicensePlate(Helpers.getUserString("Enter the license plate", in));
+        boolean needed = true;
+
+        while(needed) {
+            try {
+                car.setLicensePlate(Helpers.getUserString("Enter the license plate", in));
+                needed = false;
+            } catch(IllegalArgumentException e) {
+                UIUtility.showErrorMessage(e.getMessage(), in, messages);
+            }
+        }
         car.setMake(Helpers.getUserString("Enter the make", in));
         car.setModel(Helpers.getUserString("Enter the model", in));
         String prompt = "Enter the model year";
         int modelYear;
-        boolean needed = true;
+        needed = true;
         while(needed){
             try{
-                car.setModelYear(Helpers.getUserIntInRange(prompt, Car.MINIMUM_MODEL_YEAR, Car.MAXIMUM_MODEL_YEAR, in));
+                car.setModelYear(Helpers.getUserInt(prompt, in, messages));
                 needed = false;
             } catch(IllegalArgumentException e){
-                UIUtility.showErrorMessage().accept(e.getMessage(), in);
+                UIUtility.showErrorMessage(e.getMessage(), in, messages);
             }
         }
 
         try{
             dao.createCarRecord(car);
-            System.out.println("Added " + car);
+            System.out.println("\nAdded: " + car);
         } catch (DataException e) {
-            UIUtility.showErrorMessage().accept(e.getMessage(), in);
+            UIUtility.showErrorMessage(e.getMessage(), in, messages);
         }
-        UIUtility.pressEnterToContinue().accept(in);
+//
     }
 }

@@ -43,13 +43,14 @@ public class Helpers {
      * @param lowBound the lower boundary of the range, inclusive
      * @param highBound the upper boundary of the range, inclusive
      * @param in a Scanner object
+     * @param messages
      * @return the entered whole number
      */
-    public static int getUserIntInRange(String prompt, int lowBound, int highBound, Scanner in) {
+    public static int getUserIntInRange(String prompt, int lowBound, int highBound, Scanner in, ResourceBundle messages) {
         int value = -1;
         boolean needed = true;
         while (needed) {
-            value = getUserInt(prompt, in);
+            value = getUserInt(prompt, in, Helpers.messages);
             if (value < lowBound || value > highBound) {
                 UIUtility.showErrorMessage().accept("Input not in range " + lowBound + " to " + highBound + ".", in);
             } else {
@@ -66,11 +67,12 @@ public class Helpers {
      *
      * @param prompt the prompt text for the user
      * @param in a Scanner object
+     * @param messages
      * @return the int entered
      */
 
     // rewrite as a lambda expression
-    public static int getUserInt(String prompt, Scanner in){
+    public static int getUserInt(String prompt, Scanner in, ResourceBundle messages){
         int value = 0;
         String input;
         boolean needed = true;

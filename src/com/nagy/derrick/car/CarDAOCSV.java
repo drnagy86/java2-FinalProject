@@ -2,7 +2,11 @@ package com.nagy.derrick.car;
 
 import com.nagy.derrick.DataException;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class CarDAOCSV implements CarDAO {
     private static final String FILE_NAME = "cars.csv";
@@ -10,6 +14,27 @@ public class CarDAOCSV implements CarDAO {
 
     @Override
     public void readInData() throws DataException {
+
+        try(Scanner in = new Scanner(new File(FILE_NAME))){
+            cars = new ArrayList<>();
+            int lineCount = 0;
+
+            String line;
+            String[] fields;
+            String licensePlate;
+            String make;
+            String model;
+            int modelYear;
+
+            line = in.nextLine();
+            while (in.hasNext()){
+
+            }
+
+        }
+        catch(FileNotFoundException e){
+            throw new DataException(e);
+        }
 
     }
 
@@ -19,12 +44,16 @@ public class CarDAOCSV implements CarDAO {
 
     @Override
     public void verifyCarList() throws DataException {
-
+        if(null == cars){
+            readInData();
+        }
     }
 
     @Override
     public void createCarRecord(Car car) throws DataException {
-
+        verifyCarList();
+        cars.add(car);
+        saveToFile();
     }
 
     @Override
