@@ -9,8 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        carUI();
-        //presidentUI();
+        //carUI();
+        presidentUI();
     }
 
     private static void carUI(){
@@ -21,15 +21,15 @@ public class Main {
 
         int choice = 0;
         while (true) {
-            String menuTitle = "Main Menu";
-            String prompt = "Select an option";
+            String menuTitle = messages.getString("main-menu");
+            String prompt = messages.getString("prompt");
             String[] menuOptions = {
                     messages.getString("add-car"),
                     messages.getString("find-car"),
-                    "Show all cars",
-                    "Update a car",
-                    "Delete a car",
-                    "Change language",
+                    messages.getString("show-cars"),
+                    messages.getString("update-car"),
+                    messages.getString("delete-car"),
+                    messages.getString("change-language"),
             };
             choice = UIUtility.showMenuOptions(menuTitle, prompt, menuOptions, scanner, messages);
             if (choice == 0)
@@ -46,7 +46,6 @@ public class Main {
                     break;
                 case 3:
                     new ShowAllCars().handleTask(dao, scanner, messages);
-
                     break;
                 case 4:
                     new UpdateCar().handleTask(dao, scanner, messages);
@@ -58,11 +57,10 @@ public class Main {
                     language.changeLanguage(scanner,messages);
                     messages = language.getMessages();
                     break;
-
             }
             UIUtility.pressEnterToContinue(scanner, messages);
         }
-        System.out.println("\nProgram complete. Goodbye.\n");
+        System.out.println("\n" + messages.getString("end") + "\n");
         scanner.close();
     }
 
@@ -74,8 +72,8 @@ public class Main {
 //        CarDAO dao = CarDAOFactory.getCarDAO();
         PresidentDAO dao = PresidentDAOFactory.getPresidentDAO();
         Scanner scanner = new Scanner(System.in);
-        String menuTitle = "Main Menu";
-        String prompt = "Select an option";
+        String menuTitle = messages.getString("main-menu");
+        String prompt = messages.getString("prompt");
         String[] menuOptions = {
                 //messages.getString("add-president"),
                 "Add a president",
@@ -119,7 +117,7 @@ public class Main {
             }
             UIUtility.pressEnterToContinue(scanner, messages).accept(scanner);
         }
-        System.out.println("\nProgram complete. Goodbye.\n");
+        System.out.println("\n" + messages.getString("end") + "\n");
         scanner.close();
     }
 }

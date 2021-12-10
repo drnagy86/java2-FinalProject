@@ -2,8 +2,7 @@ package com.nagy.derrick.car;
 
 import com.nagy.derrick.DataException;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,8 +13,7 @@ public class CarDAOCSV implements CarDAO {
 
     @Override
     public void readInData() throws DataException {
-
-        try(Scanner in = new Scanner(new File(FILE_NAME))){
+        try(BufferedReader in = new BufferedReader(new FileReader(FILE_NAME))){
             cars = new ArrayList<>();
             int lineCount = 0;
 
@@ -26,20 +24,52 @@ public class CarDAOCSV implements CarDAO {
             String model;
             int modelYear;
 
-            line = in.nextLine();
-            while (in.hasNext()){
+
+
+            while (in.ready()){
+                lineCount++;
+                line = in.readLine();
+                if(lineCount > 1){
+                    fields = line.split(",");
+                    licensePlate = fields[0];
+                    make = fields[1];
+                    model = fields[2];
+                    try {
+                        modelYear = Integer.parseInt(fields[3]);
+                    }
+                    catch (NumberFormatException ex){
+                        throw new DataException(ex.getMessage() + " CSV line" + lineCount);
+                    }
+
+                    cars.add(new Car(licensePlate, make, model,modelYear));
+                }else {
+                    break;
+                }
 
             }
 
         }
-        catch(FileNotFoundException e){
-            throw new DataException(e);
+
+        catch(IOException e){
+            throw new DataException(e.getMessage());
         }
 
     }
 
     private void saveToFile() throws DataException {
 
+        try(PrintWriter writer = new PrintWriter(new File(FILE_NAME))){
+            writer.println("licensePlate,make,model,modelYear");
+            String line = "";
+
+            for(Car car : cars){
+                line = car.getLicensePlate() + "," + car.getMake() +","+ car.getModel() +","+ car.getModelYear();
+                writer.println(line);
+            }
+        }
+        catch (FileNotFoundException ex){
+            throw new DataException(ex.getMessage());
+        }
     }
 
     @Override
@@ -53,6 +83,7 @@ public class CarDAOCSV implements CarDAO {
     public void createCarRecord(Car car) throws DataException {
         verifyCarList();
         cars.add(car);
+
         saveToFile();
     }
 

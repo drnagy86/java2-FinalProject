@@ -19,15 +19,15 @@ public class AddCar implements CarDataHandler {
 
         while(needed) {
             try {
-                car.setLicensePlate(Helpers.getUserString("Enter the license plate", in));
+                car.setLicensePlate(Helpers.getUserString(messages.getString("enter-license-plate"), in));
                 needed = false;
             } catch(IllegalArgumentException e) {
                 UIUtility.showErrorMessage(e.getMessage(), in, messages);
             }
         }
-        car.setMake(Helpers.getUserString("Enter the make", in));
-        car.setModel(Helpers.getUserString("Enter the model", in));
-        String prompt = "Enter the model year";
+        car.setMake(Helpers.getUserString(messages.getString("enter-make"), in));
+        car.setModel(Helpers.getUserString(messages.getString("enter-model"), in));
+        String prompt = messages.getString("enter-model-year");
         int modelYear;
         needed = true;
         while(needed){
@@ -41,7 +41,7 @@ public class AddCar implements CarDataHandler {
 
         try{
             dao.createCarRecord(car);
-            System.out.println("\nAdded: " + car);
+            System.out.println("\n" + messages.getString("added") + ": " + car.toString());
         } catch (DataException e) {
             UIUtility.showErrorMessage(e.getMessage(), in, messages);
         }

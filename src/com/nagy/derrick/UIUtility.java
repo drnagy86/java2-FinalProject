@@ -24,7 +24,7 @@ public class UIUtility {
         for (String menuOption : menuOptions) {
             System.out.println(count++ + ": " + menuOption);
         }
-        System.out.println(count + ": Exit");
+        System.out.println(count + ": " + messages.getString("exit"));
         System.out.print("\n" + prompt + ": ");
         String input = in.nextLine().trim();
         int result = validateIntInput(input, menuOptions.length + 1, in, messages);
@@ -63,7 +63,7 @@ public class UIUtility {
                 throw new NumberFormatException();
             }
         } catch (NumberFormatException e) {
-            showErrorMessage().accept("Invalid input", in);
+            showErrorMessage().accept(messages.getString("invalid-input"), in);
 
         }
         return intInput;
@@ -72,20 +72,20 @@ public class UIUtility {
 
     public static BiConsumer<String, Scanner> showErrorMessage(){
         return (message, in) ->{
-            System.out.println("ERROR: " + message);
+            System.out.println(messages.getString("error") +  ": " + message);
             pressEnterToContinue(in, messages).accept(in);
         };
 
     }
 
     public static void pressEnterToContinue(Scanner in) {
-        System.out.print("\nPress Enter to continue... ");
+        System.out.print("\n" + messages.getString("press-enter"));
         in.nextLine();
     }
 
     public static Consumer<Scanner> pressEnterToContinue(Scanner scanner, ResourceBundle messages){
         return in -> {
-            System.out.println("\nPress Enter to continue... ");
+            System.out.print("\n" + messages.getString("press-enter"));
             in.nextLine();
         };
     }
@@ -113,7 +113,7 @@ public class UIUtility {
     }
 
     public static void showErrorMessage(String message, Scanner in, ResourceBundle messages) {
-        System.out.println("ERROR: " + message);
+        System.out.println(messages.getString("error") + ": " + message);
         pressEnterToContinue(in, messages);
     }
 

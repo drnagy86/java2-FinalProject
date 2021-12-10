@@ -52,7 +52,7 @@ public class Helpers {
         while (needed) {
             value = getUserInt(prompt, in, Helpers.messages);
             if (value < lowBound || value > highBound) {
-                UIUtility.showErrorMessage().accept("Input not in range " + lowBound + " to " + highBound + ".", in);
+                UIUtility.showErrorMessage().accept(messages.getString("not-in-range-error") + " " + lowBound + " - " + highBound + ".", in);
             } else {
                 needed = false;
             }
@@ -83,7 +83,7 @@ public class Helpers {
                 value = Integer.parseInt(input);
                 needed = false;
             }catch(NumberFormatException nfe){
-                UIUtility.showErrorMessage().accept("Invalid integer", in);
+                UIUtility.showErrorMessage().accept(messages.getString("int-error"), in);
             }
         }
         return value;
