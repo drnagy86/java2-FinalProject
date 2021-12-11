@@ -7,7 +7,10 @@ import java.util.*;
 public class Language {
 
     public enum Option {
-        US("US English"), FRANCE("French");
+        US("US English"),
+        FRANCE("French"),
+        SPANISH("Spanish")
+        ;
 
         private String language;
 
@@ -36,6 +39,8 @@ public class Language {
         Locale result;
         switch (language) {
             case US -> locale = Locale.US;
+            case FRANCE -> locale = Locale.FRANCE;
+            case SPANISH -> locale = new Locale("es", "US");
             default -> locale = Locale.getDefault();
         }
         messages = ResourceBundle.getBundle("messages", locale);
@@ -64,6 +69,10 @@ public class Language {
                 break;
             } else if (choice == 2) {
                 this.messages = ResourceBundle.getBundle("messages", Locale.FRANCE);
+                System.out.println("\nLanguage changed.");
+                break;
+            } else if (choice == 3) {
+                this.messages = ResourceBundle.getBundle("messages", new Locale("es", "US"));
                 System.out.println("\nLanguage changed.");
                 break;
             } else if (choice == menuOptions.length + 1) {

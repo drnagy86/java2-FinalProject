@@ -69,23 +69,23 @@ public class Main {
         language.setLocale(Language.Option.US);
         ResourceBundle messages = language.getMessages();
 
-//        CarDAO dao = CarDAOFactory.getCarDAO();
         PresidentDAO dao = PresidentDAOFactory.getPresidentDAO();
         Scanner scanner = new Scanner(System.in);
-        String menuTitle = messages.getString("main-menu");
-        String prompt = messages.getString("prompt");
-        String[] menuOptions = {
-                //messages.getString("add-president"),
-                "Add a president",
-                "Find a president",
-                "Show all presidents",
-                "Update a president",
-                "Delete a president",
-                "Change language",
-                "Change data source"
-        };
+
         int choice = 0;
         while (true) {
+            String menuTitle = messages.getString("main-menu");
+            String prompt = messages.getString("prompt");
+            String[] menuOptions = {
+                    messages.getString("add-president"),
+                    messages.getString("find-president"),
+                    messages.getString("show-president"),
+                    messages.getString("update-president"),
+                    messages.getString("delete-president"),
+                    messages.getString("change-language"),
+                    messages.getString("data-source")
+
+            };
             choice = UIUtility.showMenuOptions(menuTitle, prompt, menuOptions, scanner);
             if (choice == 0)
                 continue;
@@ -109,7 +109,8 @@ public class Main {
 
                     break;
                 case 6:
-
+                    language.changeLanguage(scanner,messages);
+                    messages = language.getMessages();
                     break;
                 case 7:
 
