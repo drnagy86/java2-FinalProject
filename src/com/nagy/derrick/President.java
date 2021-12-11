@@ -17,6 +17,7 @@ public class President extends Person implements Comparable<President>{
     public static final int MIN_INAUGURATION_AGE_DAYS = 1;
     public static final int MAX_INAUGURATION_AGE_DAYS = 365;
     public static final int MIN_PRESIDENT_ORDINAL = 1;
+    public static final int MAX_PRESIDENT_ORDINAL = Integer.MAX_VALUE;
 
 
     public static final String MSG_ILLEGAL_ARGUMENT_EXCEPTION_INAUGURATION_AGE_YEARS = "Age must be between 35 and 100 years old.";

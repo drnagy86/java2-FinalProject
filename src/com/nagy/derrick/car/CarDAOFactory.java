@@ -1,7 +1,7 @@
 package com.nagy.derrick.car;
 
 public class CarDAOFactory {
-    private static final String DAO_SOURCE = "MYSQL";
+    private static final String DAO_SOURCE = "CSV";
 
     public static CarDAO getCarDAO(){
         CarDAO dao = null;

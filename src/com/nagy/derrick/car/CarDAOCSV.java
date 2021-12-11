@@ -98,6 +98,8 @@ public class CarDAOCSV implements CarDAO {
     public List<Car> getAllCars() throws DataException {
         List<Car> cars = null;
 
+        readInData();
+
         return cars;
     }
 

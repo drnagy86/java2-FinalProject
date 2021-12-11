@@ -95,12 +95,14 @@ public class Main {
             switch (choice) {
                 case 1:
                     //new AddCar().handleTask(dao,scanner);
+                    new AddPresident().handleTask(dao, scanner, messages);
                     break;
                 case 2:
+                    new FindPresident().handleTask(dao,scanner,messages);
 
                     break;
                 case 3:
-
+                    new ShowAllPresidents().handleTask(dao,scanner,messages);
                     break;
                 case 4:
 

@@ -14,7 +14,7 @@ public interface PresidentDAO {
     void createPresidentRecord(President president) throws DataException;
 
     // Returns the President record associated with the presidential order, an ordinal rank, null if there is no such president.
-    President getPresidentByLicensePlate(int presidentID) throws DataException;
+    President getPresidentByPresidentID(int presidentID) throws DataException;
 
     // Returns a list of all the current President records.
     List<President> getAllPresidents() throws DataException;

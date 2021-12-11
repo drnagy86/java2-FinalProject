@@ -1,22 +1,43 @@
 package com.nagy.derrick;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
+import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.function.BiFunction;
 
 public class Helpers {
     private static Language language = new Language();
     private static ResourceBundle messages = language.getMessages();
 
-    /** Prints the contents of an array of integers
-     * @param arr an array of integers
-     */
+//
+//    /** Prints the contents of an array of integers
+//     * @param arr an array of integers
+//     */
+//
+//    public static void printArray(int[] arr) {
+//        for (int i = 0; i < arr.length; i++) {
+//            System.out.print(arr[i] + " ");
+//        }
+//        System.out.println();
+//    }
 
     // turn into a generic
-    public static void printArray(int[] arr) {
+    public static <T>void printArray(T[] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
         System.out.println();
+    }
+
+    public static <T>void printList(List<T> list){
+        list.forEach(System.out::println);
+    }
+
+    public static <K,V>void printMap(Map<K,V> map){
+        map.forEach((k, v) -> System.out.println());
     }
 
     /**
@@ -27,12 +48,37 @@ public class Helpers {
      */
 
     // could be a bifunction
-    public static String getUserString(String prompt, Scanner in){
+//    public static String getUserString(String prompt, Scanner in){
+//
+//        System.out.print(prompt + ": ");
+//        return in.nextLine().trim();
+//    }
 
+    public static BiFunction<String, Scanner, String> getUserString = (prompt, scanner) ->{
 
-        System.out.print(prompt + ": ");
-        return in.nextLine().trim();
-    }
+        System.out.println(prompt + ":");
+        return scanner.nextLine().trim();
+
+    };
+
+    public static BiFunction<String,Scanner, LocalDate> getUserLocalDate = (prompt, scanner) -> {
+
+        LocalDate date = LocalDate.now();
+        String dateString;
+
+        System.out.println(prompt + ":");
+
+        dateString = scanner.nextLine();
+
+        try {
+            date = LocalDate.parse(dateString);
+
+        } catch (DateTimeParseException ex){
+            UIUtility.showErrorMessage().accept(messages.getString("invalid-input") + " " + ex.getMessage(),scanner);
+        }
+        return date;
+    };
+
 
 
     /**

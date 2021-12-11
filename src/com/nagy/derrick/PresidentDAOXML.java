@@ -27,7 +27,7 @@ public class PresidentDAOXML implements PresidentDAO {
     }
 
     @Override
-    public President getPresidentByLicensePlate(int presidentID) throws DataException {
+    public President getPresidentByPresidentID(int presidentID) throws DataException {
         return null;
     }
 

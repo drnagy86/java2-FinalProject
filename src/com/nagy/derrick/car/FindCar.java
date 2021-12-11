@@ -14,17 +14,17 @@ public class FindCar implements CarDataHandler{
         try {
             List<Car> cars = dao.getAllCars();
             if(cars != null) {
-                String licensePlate = Helpers.getUserString("Enter the license plate", in);
-                System.out.println("\nSearching for license plate " + licensePlate + "...");
+                String licensePlate = Helpers.getUserString.apply(messages.getString("enter-license-plate"), in);
+                System.out.println("\n"+ messages.getString("searching-for-license-plate") +" " + licensePlate + "...");
                 Car car = dao.getCarByLicensePlate(licensePlate);
                 if (car == null) {
-                    System.out.println("No car found with license plate: " + licensePlate);
+                    System.out.println(messages.getString("no-car-found-with-license-plate") + ": " + licensePlate);
                 } else {
-                    System.out.println("Retrieved: " + car);
+                    System.out.println(messages.getString("retrieved") + " : " + car);
                 }
-                System.out.println("\nFind a Car complete.");
+                System.out.println("\n" + messages.getString("find-a-car-complete"));
             } else {
-                System.out.println("There are no cars available.");
+                System.out.println(messages.getString("there-are-no-cars-available"));
             }
         } catch (DataException e) {
             UIUtility.showErrorMessage(e.getMessage(), in, messages);
